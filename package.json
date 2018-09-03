@@ -1,0 +1,26 @@
+{
+  "name": "ApiPessoasNode",
+  "version": "1.0.0",
+  "description": "Versão Node.js + Express da api Pessoas (https://github.com/jonathan-santos/ApiPessoas, versão Asp.NET Core).",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jonathan-santos/ApiPessoasNode.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/jonathan-santos/ApiPessoasNode/issues"
+  },
+  "homepage": "https://github.com/jonathan-santos/ApiPessoasNode#readme",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.3",
+    "mongoose": "^5.2.12"
+  }
+}
