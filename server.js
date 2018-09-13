@@ -17,6 +17,14 @@ router.get('/', (req, res) => {
 });
 
 router.route('/pessoas')
+    .get((req, res) => {
+        Pessoa.find((erro, pessoas) => {
+            if(erro)
+                res.send(erro);
+
+            res.json(pessoas);
+        });
+    })
     .post((req, res) => {
         const pessoa = new Pessoa();
         pessoa.nome = req.body.nome;
@@ -26,6 +34,39 @@ router.route('/pessoas')
                 res.send(erro);
 
             res.json({ message: 'Pessoa criada' });
+        });
+    });
+
+router.route('/pessoas/:pessoa_id')
+    .get((req, res) => {
+        Pessoa.findById(req.params.pessoa_id, (erro, pessoa) => {
+            if(erro)
+                res.send(erro);
+
+            res.json(pessoa);
+        });
+    })
+    .put((req, res) => {
+        Pessoa.findById(req.params.pessoa_id, (erro, pessoa) => {
+            if(erro)
+                res.send(erro);
+
+            pessoa.nome = req.body.nome;
+
+            pessoa.save(erro => {
+                if(erro)
+                    res.send(erro);
+
+                res.json('Pessoa atualizada');
+            });
+        });
+    })
+    .delete((req, res) => {
+        Pessoa.remove({ _id: req.params.pessoa_id }, (erro, pessoa) => {
+            if(erro)
+                res.send(erro);
+
+            res.json({ message: 'pessoa deletada com sucesso' });
         });
     });
 
